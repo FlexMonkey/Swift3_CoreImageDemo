@@ -12,6 +12,7 @@
 		3E44E8CA1CF43AD70021685E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E44E8C81CF43AD70021685E /* Main.storyboard */; };
 		3E44E8CC1CF43AD70021685E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E44E8CB1CF43AD70021685E /* Assets.xcassets */; };
 		3E44E8CF1CF43AD70021685E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E44E8CD1CF43AD70021685E /* LaunchScreen.storyboard */; };
+		3E44E8D71CF43B630021685E /* monalisa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E44E8D61CF43B630021685E /* monalisa.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3E44E8CB1CF43AD70021685E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E44E8CE1CF43AD70021685E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E44E8D01CF43AD70021685E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E44E8D61CF43B630021685E /* monalisa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monalisa.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				3E44E8C41CF43AD70021685E /* AppDelegate.swift */,
 				3E44E8C61CF43AD70021685E /* ViewController.swift */,
 				3E44E8C81CF43AD70021685E /* Main.storyboard */,
+				3E44E8D61CF43B630021685E /* monalisa.jpg */,
 				3E44E8CB1CF43AD70021685E /* Assets.xcassets */,
 				3E44E8CD1CF43AD70021685E /* LaunchScreen.storyboard */,
 				3E44E8D01CF43AD70021685E /* Info.plist */,
@@ -125,6 +128,7 @@
 				3E44E8CF1CF43AD70021685E /* LaunchScreen.storyboard in Resources */,
 				3E44E8CC1CF43AD70021685E /* Assets.xcassets in Resources */,
 				3E44E8CA1CF43AD70021685E /* Main.storyboard in Resources */,
+				3E44E8D71CF43B630021685E /* monalisa.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
