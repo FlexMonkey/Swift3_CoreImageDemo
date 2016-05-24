@@ -14,16 +14,16 @@ class ViewController: UIViewController {
     {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.grayColor()
+        view.backgroundColor = UIColor.gray()
         
         CustomFiltersVendor.registerFilters()
         
-        guard let filterName = CIFilter.filterNamesInCategory(CategoryCustomFilters).first else
+        guard let filterName = CIFilter.filterNames(inCategory: CategoryCustomFilters).first else
         {
             return
         }
         
-        let threshold = 0.5
+        let threshold: NSObject = 0.5
         let mona = CIImage(image: UIImage(named: "monalisa.jpg")!)!
         
         let filter = CIFilter(
@@ -37,17 +37,17 @@ class ViewController: UIViewController {
         
         let context = CIContext()
         
-        let final: CGImageRef = context.createCGImage(outputImage, fromRect: outputImage.extent)
+        let final: CGImage = context.createCGImage(outputImage, from: outputImage.extent)
         
         let frame = CGRect(
-            x: Int(view.bounds.midX) - CGImageGetWidth(final) / 2,
-            y: Int(view.bounds.midY) - CGImageGetHeight(final) / 2,
-            width: CGImageGetWidth(final),
-            height: CGImageGetHeight(final))
+            x: Int(view.bounds.midX) - final.width / 2,
+            y: Int(view.bounds.midY) - final.height / 2,
+            width: final.width,
+            height: final.height)
         
         let imageView = UIImageView(frame: frame)
         
-        imageView.image = UIImage(CGImage: final)
+        imageView.image = UIImage(cgImage: final)
         
         view.addSubview(imageView)
     }
@@ -63,15 +63,15 @@ class CustomFiltersVendor: NSObject, CIFilterConstructor
 {
     static func registerFilters()
     {
-        CIFilter.registerFilterName(
+        CIFilter.registerName(
             "ThresholdFilter",
             constructor: CustomFiltersVendor(),
             classAttributes: [
-                kCIAttributeFilterCategories: [CategoryCustomFilters]
+                kCIAttributeFilterCategories: [CategoryCustomFilters.nsString]
             ])
     }
     
-    func filterWithName(name: String) -> CIFilter?
+    func filter(withName name: String) -> CIFilter?
     {
         switch name
         {
@@ -87,7 +87,7 @@ class CustomFiltersVendor: NSObject, CIFilterConstructor
 class ThresholdFilter: CIFilter
 {
     var inputImage : CIImage?
-    var inputThreshold: CGFloat = 0.75
+    var inputThreshold: NSNumber = 0.75
     
     override var attributes: [String : AnyObject]
     {
@@ -96,7 +96,7 @@ class ThresholdFilter: CIFilter
             "inputImage": [kCIAttributeIdentity: 0,
                 kCIAttributeClass: "CIImage",
                 kCIAttributeDisplayName: "Image",
-                kCIAttributeType: kCIAttributeTypeImage],
+                kCIAttributeType: kCIAttributeTypeImage.nsString] as AnyObject,
             "inputThreshold": [kCIAttributeIdentity: 0,
                 kCIAttributeClass: "NSNumber",
                 kCIAttributeDefault: 0.75,
@@ -104,7 +104,7 @@ class ThresholdFilter: CIFilter
                 kCIAttributeMin: 0,
                 kCIAttributeSliderMin: 0,
                 kCIAttributeSliderMax: 1,
-                kCIAttributeType: kCIAttributeTypeScalar]
+                kCIAttributeType: kCIAttributeTypeScalar.nsString] as AnyObject
         ]
     }
     
@@ -146,7 +146,16 @@ class ThresholdFilter: CIFilter
         let extent = inputImage.extent
         let arguments = [inputImage, inputThreshold]
         
-        return thresholdKernel.applyWithExtent(extent, arguments: arguments)
+        return thresholdKernel.apply(withExtent: extent, arguments: arguments)
     }
 }
 
+// MARK: Extensions
+
+extension String
+{
+    var nsString: NSString
+    {
+        return NSString(string: self)
+    }
+}
