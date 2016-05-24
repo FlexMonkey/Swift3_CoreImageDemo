@@ -23,7 +23,7 @@ class ViewController: UIViewController {
             return
         }
         
-        let threshold: NSObject = 0.5
+        let threshold: NSNumber = 0.5
         let mona = CIImage(image: UIImage(named: "monalisa.jpg")!)!
         
         let filter = CIFilter(
